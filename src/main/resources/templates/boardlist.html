@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> <!--Spring io에서 thymeleaf를 넣어줬었다 이는 jstl처럼 for each기능도 탑제한 신식 친구였음..-->
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 작성 폼</title>
+</head>
+
+<style>
+    .layout{
+        width: 500px;
+        margin: 0 auto;
+        margin-top:40px;
+    }
+
+</style>
+
+
+<body>
+<div class="layout">
+ <table border="1">
+     <thead>
+        <tr>
+             <th>글번호</th>
+
+             <th>제목</th>
+        </tr>
+    </thead>
+<tbody>
+    <tr th:each="board : ${list}"> <!--board라는 변수에 model변수에 저장했던 list불러와서 넣음-->
+        <td th:text="${board.id}"></td> <!--for each 반복분으로 꺼내서 보여주는 작업-->
+        <td>
+            <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>
+        </td>
+    </tr>
+</tbody>
+ </table>
+</div>
+
+
+
+</body>
+</html>

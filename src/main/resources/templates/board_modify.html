@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 수정 폼</title>
+</head>
+
+<style>
+    .layout{
+        width: 500px;
+        margin: 0 auto;
+        margin-top:40px;
+    }
+
+    .layout input {
+        width: 100%;
+        box-sizing: border-box
+    }
+
+    .layout textarea {
+        width:500px;
+        margin-top : 10px;
+        min-height : 300px;
+
+    }
+</style>
+
+
+<body>
+<div class="layout">
+ <form th:action="@{/board/modify/{id}(id=${board.id})}" method="post">
+    제목 :<br>
+     <input type="text" name="title" th:value="${board.title}"><br> <!--entity에서 적은 DB 컬럼 이름으로 name 값을 맞춰주기만 해서 컨트롤러로 넘기면 레포지터리에서 DB연동하면서 알아서 entity변수에 넣어주고 꺼내오나봄-->
+    내용 : <br>
+     <textarea name="content" th:text="${board.content}"></textarea><br>
+    <button type="submit">수정</button>
+</form>
+</div>
+
+
+
+</body>
+</html>
